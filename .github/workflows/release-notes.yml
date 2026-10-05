@@ -1,0 +1,20 @@
+name: Update release notes
+on:
+  push:
+    branches: [main]
+    paths: ['build/release-notes.md']
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update published description
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="v$(tr -d '\r\n' < build/version.txt)"
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release edit "$tag" --repo "$GITHUB_REPOSITORY" --notes-file build/release-notes.md
+          fi
