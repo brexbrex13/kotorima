@@ -72,6 +72,7 @@ jobs:
           New-Item -ItemType Directory -Path portable | Out-Null
           Copy-Item build/bin/Kotorima.exe portable/
           Copy-Item README.md portable/
+          Copy-Item docs/manual.html portable/Manual.html
           Copy-Item LICENSE portable/
           Copy-Item THIRD_PARTY_NOTICES.txt portable/
           Compress-Archive -Path portable/* -DestinationPath kotorima-windows-amd64.zip
