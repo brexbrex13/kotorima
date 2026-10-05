@@ -1,0 +1,133 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kotorima 使い方</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f3f7f5;color:#23382f;font-family:"Segoe UI","Yu Gothic",Meiryo,sans-serif;line-height:1.85;font-size:16px}main{max-width:940px;margin:32px auto;padding:40px 48px;background:white;border:1px solid #d9e6de;border-radius:14px}h1{font-size:28px;line-height:1.45;margin-top:0;color:#126f4a}h2{font-size:21px;margin-top:38px;padding-bottom:8px;border-bottom:2px solid #d9eade;color:#176b49}a{color:#087149}code{background:#eef5f0;border-radius:4px;padding:2px 5px;font-family:Consolas,monospace}table{border-collapse:collapse;width:100%;font-size:14px;margin:20px 0}th,td{border:1px solid #d5e2db;text-align:left;padding:9px 12px;vertical-align:top}th{background:#e9f3ed}li{margin:7px 0}.toc{padding:14px 22px;border:1px solid #d9e6de;border-radius:8px;background:#f5faf6}.toc ul{padding-left:22px;margin:0}.toc li{margin:2px 0}.intro{font-size:13px;color:#607166}@media(max-width:640px){main{margin:0;padding:24px 18px;border:0;border-radius:0}h1{font-size:24px}table{font-size:12px}th,td{padding:7px}}@media print{body{background:white;font-size:11pt}main{border:0;margin:0;padding:0;max-width:none}.toc{display:none}h2{break-after:avoid}table{font-size:10pt}a{color:inherit;text-decoration:none}}</style></head><body><main><h1 id="kotorima">Kotorima（やることリマインダー）使い方</h1><p class="intro">Kotorima v1.0.0 · オフラインで読めるユーザーマニュアル</p><div class="toc">
+<ul>
+<li><a href="#kotorima">Kotorima（やることリマインダー）使い方</a><ul>
+<li><a href="#1">1. 最初の使い方</a></li>
+<li><a href="#2">2. タスクを追加・編集する</a></li>
+<li><a href="#3">3. 今日やる・重要・期限・通知の違い</a></li>
+<li><a href="#4">4. カテゴリで整理する</a></li>
+<li><a href="#5">5. メモ・画像・リンク</a></li>
+<li><a href="#6">6. 通知が出たとき</a></li>
+<li><a href="#7">7. 定期タスクを使う</a></li>
+<li><a href="#8">8. トレイとショートカット</a></li>
+<li><a href="#9">9. 完了済みとごみ箱</a></li>
+<li><a href="#10">10. 保存・バックアップ・引き継ぎ</a></li>
+<li><a href="#11-ai">11. AI入力補助は任意です</a></li>
+<li><a href="#_1">困ったとき</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>対象：Windows版 v1.0.0</p>
+<p>Kotorimaは、思いついた用事を素早く登録し、期限・通知・メモを添えて整理するアプリです。AIを使わなくても、すべての基本機能を利用できます。</p>
+<h2 id="1">1. 最初の使い方</h2>
+<ol>
+<li>配布ZIPを展開し、書き込み可能なフォルダーで <code>Kotorima.exe</code> を起動します。Windows 10/11とWebView2 Runtimeが必要です。</li>
+<li>上部の入力欄に用事を入力し、<strong>Enter</strong>で登録します。改行は<strong>Shift＋Enter</strong>です。</li>
+<li>タスクの本文をクリックすると、詳細が開きます。メモ・期限・通知・カテゴリを編集し、<strong>今すぐ保存</strong>で反映します。</li>
+<li>用事を終えたら、一覧の完了ボタンを押します。完了済みは上部のチェックマークから確認できます。</li>
+<li>メイン画面の<strong>×</strong>はトレイへの格納です。通知を受けるにはアプリを起動したままにします。完全終了はトレイアイコンの右クリックから行います。</li>
+</ol>
+<h2 id="2">2. タスクを追加・編集する</h2>
+<p>選択中のカテゴリに新しいタスクが入ります。「全て」の表示では、カテゴリ管理の先頭カテゴリが追加先です。定期だけの表示・完了済み・ごみ箱の表示中は通常の新規入力ができません。</p>
+<ul>
+<li>入力欄の時計ボタンから、期限・通知・重要を付けて登録できます。</li>
+<li>よく使うタスク名は入力候補に表示されます。候補を選ばず、そのままEnterで登録することもできます。</li>
+<li>タスクを右クリックすると、詳細を開く・完了にする・ごみ箱へ送る操作を選べます。完了済みやごみ箱では、その状態に合う操作に変わります。</li>
+</ul>
+<p><strong>詳細の変更は、保存するまで正式には反映されません。</strong> 編集中に期限・通知を変更しても、保存前は新しい日時では動作しません。既に保存してある通知は引き続き有効です。</p>
+<p>詳細の×や画面移動時に未保存の変更があれば、<strong>保存して続ける／破棄して続ける／編集に戻る</strong>を選べます。詳細下部の<strong>変更を破棄</strong>でも取り消せます。未保存の入力は下書きとして保持され、次に詳細を開いた際に復元されることがあります。保存失敗の表示が出た場合は、その画面に入力を残したまま原因を確認してください。</p>
+<h2 id="3">3. 今日やる・重要・期限・通知の違い</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>使いどころ</th>
+<th>動作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>今日やる</td>
+<td>今日取り組む用事を選ぶ</td>
+<td>タスクの日の出マークで切り替えます。期限は変わりません。</td>
+</tr>
+<tr>
+<td>重要</td>
+<td>優先したい用事に印を付ける</td>
+<td>一覧の★で切り替え、★の絞り込みで確認できます。</td>
+</tr>
+<tr>
+<td>期限日</td>
+<td>いつまでに終えるかを管理する</td>
+<td>期限超過・今日・近日の表示に使います。期限だけでは個別通知しません。</td>
+</tr>
+<tr>
+<td>通知</td>
+<td>作業を思い出す日時を指定する</td>
+<td>指定日時に通知します。期限と別の日時を選べます。</td>
+</tr>
+</tbody>
+</table>
+<p>「今日やる」「重要」などを組み合わせて絞り込めます。上部の期限帯やベルのボタンからは、期限が近いタスクを確認できます。検索は虫眼鏡から開きます。</p>
+<h2 id="4">4. カテゴリで整理する</h2>
+<p>カテゴリタブの<strong>＋</strong>、または<strong>⋯ → カテゴリ管理</strong>から追加できます。タブやリストのカテゴリ見出しを右クリックし、<strong>カテゴリ編集</strong>を選ぶこともできます。</p>
+<ul>
+<li>カテゴリ管理で名前・配色・表示順を変更できます。上下のボタンで表示順を入れ替えます。</li>
+<li><strong>表示</strong>を外すと、そのカテゴリを非表示にします。通知と定期タスクの生成は続きます。先頭カテゴリは標準追加先なので非表示にできません。</li>
+<li>通常一覧では、タスク左側の移動ハンドルをドラッグして順序やカテゴリを変更できます。詳細のカテゴリ欄からも変更できます。</li>
+<li>カテゴリを削除しても、タスクと定期設定は消えず、残った先頭カテゴリへ移動します。「未分類」という名前のカテゴリに固定ではありません。カテゴリは最低1個必要です。</li>
+</ul>
+<h2 id="5">5. メモ・画像・リンク</h2>
+<p>タスク詳細のメモ欄では、太字・文字色・画像・リンクを利用できます。画像は選択ボタンのほか、クリップボードからの貼り付けやドロップで追加できます。</p>
+<p>画像をクリックすると、独立した画像ビューアで開きます。<strong>×</strong>または<strong>Escape</strong>で閉じます。Webページや作業フォルダーの参照先は、リンクとして登録できます。リンク先のファイルそのものをアプリへ取り込む機能ではありません。</p>
+<p>通知でも手順や作業場所を見たい場合は、内容とメモの間にある<strong>通知にメモを表示する</strong>をオンにして保存します。初期値はオフです。通知内の画像・リンクを操作するだけでは、その通知を確認済みにはしません。設定の<strong>通知内容を隠し、件数だけ表示</strong>がオンの場合は、メモも隠します。</p>
+<h2 id="6">6. 通知が出たとき</h2>
+<p>詳細の<strong>通知</strong>欄で、期限日と同じ・明日・時間後・日時指定などを選びます。期限日と同じ場合は、期限日の通知時刻も指定します。</p>
+<ul>
+<li><strong>タスクの本文</strong>をクリック：詳細を開き、その通知を閉じます。タスクは未完了のままです。</li>
+<li><strong>完了</strong>：タスクを完了します。</li>
+<li><strong>10分後／あとで…</strong>：選んだ時間後に再通知します。期限は変わりません。</li>
+<li><strong>×</strong>：その通知を確認して閉じます。タスクは未完了のままです。</li>
+</ul>
+<p>複数の通知は個別に表示されます。見逃した通知は<strong>⋯ → 未確認の通知</strong>で確認できます。画面に収まらない通知も、未確認の一覧に残ります。</p>
+<p>設定でまとめ通知の時刻・曜日を指定すると、期限が近い用事をまとめて確認できます。まとめ通知では各タスクを完了でき、<strong>ボードを開く</strong>で一覧へ移れます。<strong>⋯ → 通知を一時停止</strong>で、通知を一時的に保留できます。</p>
+<h2 id="7">7. 定期タスクを使う</h2>
+<p><strong>⋯ → 定期設定</strong>で、繰り返す用事を登録します。内容・カテゴリ・繰り返し周期・期限の曜日や日付・タスクリストへの追加日数を設定し、必要に応じて通知も指定します。</p>
+<p>例：毎週金曜日が期限で、<strong>タスクリストへの追加：2日前</strong>なら、水曜日からその金曜日のタスクが追加対象になります。登録時も同じ条件で判定します。通知は別に、何日前の何時かを指定します。通知する日までにタスクが追加される設定にしてください。</p>
+<ul>
+<li>周期ごとに別のタスクが作られます。前回分が未完了でも、次回分は追加されます。</li>
+<li>定期由来のタスクは、カテゴリ一覧の<strong>定期</strong>で絞り込めます。</li>
+<li>定期設定の一覧にある<strong>自動追加</strong>をオフにすると、次の生成を停止します。既に追加されたタスクは残ります。</li>
+<li>再開時は、停止中に過ぎた期限の分をさかのぼって追加しません。</li>
+<li>定期設定の編集は今後の生成分に適用され、既存のタスクは変わりません。作成済みの1件だけを直す場合は、そのタスクの詳細を編集します。</li>
+</ul>
+<h2 id="8">8. トレイとショートカット</h2>
+<ul>
+<li>トレイアイコンを<strong>シングルクリック</strong>：簡易入力を開きます。入力してEnterで登録します。</li>
+<li><strong>ダブルクリック</strong>：メイン画面を開きます。</li>
+<li><strong>右クリック</strong>：アプリを終了できます。</li>
+<li>初期設定の<strong>Ctrl＋Alt＋N</strong>：ほかのアプリから簡易入力を呼び出します。<strong>⋯ → 設定</strong>で変更・無効化できます。</li>
+</ul>
+<p>ショートカットが登録できない場合は、ほかのアプリと重なっていない組み合わせへ変更してください。画面内のボタンの意味は、マウスを重ねると説明が出ます。</p>
+<h2 id="9">9. 完了済みとごみ箱</h2>
+<p>完了直後に表示される<strong>元に戻す</strong>で取り消せます。表示が消えた後でも、上部のチェックマークから完了済みを開き、未完了へ戻せます。</p>
+<p>ごみ箱は<strong>⋯ → ごみ箱</strong>から開きます。タスクの右クリックなどから戻せます。完了済みとごみ箱では、該当タスクのあるカテゴリだけ表示します。</p>
+<p><strong>完了済みをすべてごみ箱へ</strong>は、検索結果だけでなく完了済み全件が対象です。<strong>ごみ箱を空にする</strong>は、ごみ箱のタスクを完全削除します。復元できなくなるため、残したい内容は先に戻すかバックアップしてください。残るタスク・定期設定が参照していない内部画像も整理されます。外部リンク先のファイルは削除しません。</p>
+<h2 id="10">10. 保存・バックアップ・引き継ぎ</h2>
+<p>タスク・設定・添付画像は、<code>Kotorima.exe</code> と同じ場所の <strong>dataフォルダー</strong>に保存します。アプリを移動する場合は、dataフォルダーも一緒に移動します。</p>
+<p><strong>⋯ → 設定 → データとバックアップ</strong>で、<strong>画像を含めてバックアップ</strong>を押すとZIPを保存します。保存先は画面に表示されます。<strong>バックアップZIPから復元</strong>で戻せます。復元は現在のタスク・設定をバックアップの内容へ戻す操作で、実行前に現在の内容もバックアップします。</p>
+<p>MemoTodo v3から移る場合は、旧アプリをトレイから完全終了し、既存のdataフォルダーと同じ場所へKotorima.exeを配置してください。データや旧バックアップは引き継げます。APIキーはWindowsユーザー単位で暗号化され、バックアップには含まれません。別のPCへ移した場合は再入力してください。</p>
+<h2 id="11-ai">11. AI入力補助は任意です</h2>
+<p><strong>⋯ → 設定 → AI対応</strong>の<strong>AIでタスク入力を補助する</strong>で切り替えます。初期値はオフです。有効時は、カテゴリ・重要・期限・通知の候補や、似た既存タスクを入力中に表示します。推定を待たずに登録でき、手動で指定した項目は優先されます。</p>
+<p>Jev、OpenAI互換API、同じPC上のローカルAIサーバーに接続できます。ローカルAIの環境構築やモデル配布はアプリに含みません。</p>
+<p>入力中のタイトル・未完了タスク名・カテゴリ名を選んだ接続先に送信します。外部サービスを使用する場合は、送信してよい内容か確認してください。接続テストを含むクラウド通信は、サービスによって料金が発生します。</p>
+<p>接続に失敗した場合、その起動中はAI通信を止め、通常登録に切り替えます。接続設定を確認し、<strong>接続確認</strong>に成功すると再開します。設定のオン・オフや接続先は<strong>今すぐ保存</strong>で反映します。APIキーの保存・削除はその場で反映します。</p>
+<p>AIの推定精度は接続先のモデルに依存します。重要な期限や通知は、登録前に候補を確認してください。</p>
+<h2 id="_1">困ったとき</h2>
+<ul>
+<li><strong>通知が出ない</strong>：アプリが起動中か、通知を一時停止していないか、タスクの通知日時を保存したか確認します。設定の<strong>通知をテスト</strong>は、保存済みの設定を使います。</li>
+<li><strong>画面を閉じても終了しない</strong>：×はトレイへの格納です。完全終了はトレイアイコンの右クリックから行います。</li>
+<li><strong>移動後にデータが見えない</strong>：Kotorima.exeと同じ場所に、元のdataフォルダーがあるか確認します。</li>
+<li><strong>リンクが開かない</strong>：参照先が存在し、そのPCからアクセスできるか確認します。通知からWindowsのローカル／UNCパスを開く動作は、実機で未確認です。</li>
+</ul>
+<p>不具合や要望は <a href="https://github.com/brexbrex13/kotorima/issues">GitHub Issues</a>へお寄せください。</p></main></body></html>

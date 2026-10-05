@@ -1,0 +1,88 @@
+name: Verify and build
+on:
+  push:
+    branches: [main]
+  pull_request:
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  logic-and-ui:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci --prefix frontend
+      - run: npm test --prefix frontend
+      - run: npm run build --prefix frontend
+      - run: CGO_ENABLED=0 go test -tags server ./...
+      - run: go test -race ./internal/board
+      - run: CGO_ENABLED=0 go vet -tags server ./...
+      - run: CGO_ENABLED=0 go build -tags server -o /tmp/kotorima-server .
+      - run: npm run test:e2e --prefix frontend
+        env:
+          KOTORIMA_SERVER: /tmp/kotorima-server
+          KOTORIMA_CHROME: system
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ui-verification
+          path: frontend/test-results/
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci --prefix frontend
+      - run: npm run build --prefix frontend
+      - run: go test ./internal/board
+      - run: go run github.com/tc-hib/go-winres@v0.3.3 make --in build/windows/winres.json --arch amd64 --out rsrc
+      - run: go build -trimpath -ldflags="-H windowsgui -s -w" -o build/bin/Kotorima.exe .
+      - name: Native notification verification
+        shell: pwsh
+        run: |
+          go build -tags nativesmoke -o build/bin/native-smoke.exe .
+          $env:KOTORIMA_DATA_DIR = Join-Path $env:RUNNER_TEMP "kotorima-native-test"
+          $p = Start-Process build/bin/native-smoke.exe -PassThru -RedirectStandardOutput native-output.txt -RedirectStandardError native-error.txt
+          if (-not $p.WaitForExit(90000)) { $p.Kill(); throw "Native verification timed out" }
+          if (-not (Test-Path native-smoke.json)) { throw "Native verification did not produce a result" }
+          Get-Content native-smoke.json
+          if ($p.ExitCode -ne 0) { throw "Native process exited with $($p.ExitCode)" }
+          $result = Get-Content native-smoke.json -Raw | ConvertFrom-Json
+          if (-not $result.passed) { throw $result.error }
+      - name: Package portable build
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path portable | Out-Null
+          Copy-Item build/bin/Kotorima.exe portable/
+          Copy-Item README.md portable/
+          Copy-Item docs/manual.html portable/Manual.html
+          Copy-Item LICENSE portable/
+          Copy-Item THIRD_PARTY_NOTICES.txt portable/
+          Compress-Archive -Path portable/* -DestinationPath kotorima-windows-amd64.zip
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kotorima-windows-amd64
+          path: |
+            kotorima-windows-amd64.zip
+            native-smoke.json
+            native-shutdown.txt
+            native-output.txt
+            native-error.txt
